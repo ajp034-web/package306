@@ -26,10 +26,10 @@ pak::pak("ajp034-web/package306")
 
 ## Clean
 
-The clean() function provides a simple way to prepare a data frame for
-analysis. It can: - Remove rows containing missing values - Remove
-duplicate observations - Standardize column names by converting them to
-lowercase
+The clean() function provides a simple way for you to prepare a data
+frame for analysis. It can: - Remove rows containing missing values -
+Remove duplicate observations - Standardize column names by converting
+them to lowercase
 
 Users can choose which cleaning steps to apply using the remove_missing
 and remove_duplicate arguments.

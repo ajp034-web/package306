@@ -16,63 +16,63 @@ my_theme <- function() {
   list(
 
     # Base theme
-    theme_minimal() %+replace%
-      theme(
+    ggplot2::theme_minimal() +
+      ggplot2::theme(
 
         # Plot background
-        plot.background = element_rect(
+        plot.background = ggplot2::element_rect(
           fill = "#f9f9f9",
           color = NA
         ),
 
         # Panel background and grid
-        panel.background = element_rect(
+        panel.background = ggplot2::element_rect(
           fill = "#FFF0F5",
           color = NA
         ),
-        panel.grid.major = element_line(
+        panel.grid.major = ggplot2::element_line(
           color = "#F08080",
           linewidth = 0.4
         ),
-        panel.grid.minor = element_blank(),
+        panel.grid.minor = ggplot2::element_blank(),
 
         # Axis lines and ticks
-        axis.line = element_line(
+        axis.line = ggplot2::element_line(
           color = "#670030",
           linewidth = 0.5
         ),
-        axis.ticks = element_line(
+        axis.ticks = ggplot2::element_line(
           color = "#670030"
         ),
 
         # Text elements
-        plot.title = element_text(
+        plot.title = ggplot2::element_text(
           face = "bold",
           hjust = 0.5,
           color = "#670030",
           family = "sans"
         ),
-        plot.subtitle = element_text(
+        plot.subtitle = ggplot2::element_text(
           hjust = 0.5,
           color = "#670030",
           family = "sans"
         ),
-        axis.title = element_text(
+        axis.title = ggplot2::element_text(
           color = "#670030",
           face = "bold",
           family = "sans"
         ),
-        axis.text = element_text(
+        axis.text = ggplot2::element_text(
           color = "#670030",
           family = "sans"
         ),
 
         # Legend
-        legend.background = element_rect(
+        legend.background = ggplot2::element_rect(
           fill = "#f9f9f9",
           color = NA
         ),
-        legend.key = element_rect(
+        legend.key = ggplot2::element_rect(
           fill = "#f9f9f9",
           color = NA
         ),
@@ -80,24 +80,34 @@ my_theme <- function() {
       ),
 
     # Custom fill palette
-    scale_fill_manual(
+    ggplot2::scale_fill_manual(
       values = c(
         "#670030",
         "#A23B72",
         "#D76D9A",
         "#F08080",
-        "#FFC2D1"
+        "#FFC2D1",
+        "pink",
+        "pink4",
+        "salmon",
+        "lightpink3",
+        "magenta4"
       )
     ),
 
     # Custom color palette
-    scale_color_manual(
+    ggplot2::scale_color_manual(
       values = c(
         "#670030",
         "#A23B72",
         "#D76D9A",
         "#F08080",
-        "#FFC2D1"
+        "#FFC2D1",
+        "pink",
+        "pink4",
+        "salmon",
+        "lightpink3",
+        "magenta4"
       )
     )
   )

@@ -8,11 +8,13 @@ License: MIT + file LICENSE
 Config/roxygen2/version: 8.1.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Imports: 
-    clean
-URL: https://github.com/ajp034-web/package306
-BugReports: https://github.com/ajp034-web/package306/issues
-Suggests: 
+Imports:
+    ggplot2
+Suggests:
+    dplyr,
+    readr,
     knitr,
     rmarkdown
+URL: https://github.com/ajp034-web/package306
+BugReports: https://github.com/ajp034-web/package306/issues
 VignetteBuilder: knitr
