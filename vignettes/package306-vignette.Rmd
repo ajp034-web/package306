@@ -1,0 +1,107 @@
+---
+title: "package306-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{package306-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(package306)
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
+taylor_album_songs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-10-17/taylor_album_songs.csv')
+taylor_all_songs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-10-17/taylor_all_songs.csv')
+taylor_albums <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-10-17/taylor_albums.csv')
+```
+The dataset will be using in these examples includes information on various aspects of Taylor Swifts songs and albums as of 2023.
+
+
+Example of Helper Function:
+Clean()
+Using the clean function, we can make each of the variable names lowercase. We did not utilize the remove_duplicate function, but if we wanted to eliminate any repeated observations, we could have. We did use remove_missing to get rid of the incomplete cases, which in this case was Taylor Swift's bonus albums. Our new data left behind only her mainstream albums.
+
+```{r}
+cleaned.albums <- clean(taylor_albums, remove_duplicate = FALSE, remove_missing = TRUE)
+
+head(cleaned.albums)
+head(taylor_albums)
+```
+
+
+Helper Functions:
+
+Group_By() and Summarise()
+
+We can use group_by() to divide up a specific variable. In this case, we used it to sort Swift's songs by their album. We can use summarise() to give us information about each group. In the example, we use summarise() to find how many songs are in each album. We can see that Red(Taylor's Version) has the most with 30 songs.
+
+```{r}
+taylor_all_songs %>% 
+   group_by(album_name) %>%
+   summarise(numsongs = n())
+```
+
+Filter()
+
+We can use filter() to remove any variables that do not have a certain attribute. In the example, we filer out any songs that are not bonus tracks. This allows us to see that Swift has 35 bonus tracks and we can now easily compare them.
+
+```{r}
+bonus_only <- taylor_all_songs %>%
+   filter(bonus_track == TRUE) 
+```
+
+Arrange()
+
+Arrange() allows you to reorder the data based on a specific characteristic. In this case, we arranged it by user_score in descending order. This allows viewers to easily see which albums scored the highest, in this case it was folklore.
+
+```{r}
+taylor_albums %>%
+  arrange(desc(user_score))
+```
+
+Mutate()
+
+Mutate() allows to to create new variables using different calculations to help with comparing observations. In this case, we created a variable that calculate the average of user_score and metacritic_score, which created avgscore.
+
+```{r}
+cleaned.albums %>%
+  mutate(avgscore = (user_score + metacritic_score)/2)
+```
+
+Join()
+
+By using join(), in this case left_join(), we are able to combine multiple data sets to get more variables in one place. For this example, we combine taylor_album_songs with taylor_albums by the variable album_name. This allows us to see album level information for each song without having to got between each data set.
+
+```{r}
+taylor_songs_with_albums <- taylor_album_songs %>%
+  left_join(
+    taylor_albums,
+    by = "album_name"
+  )
+
+taylor_songs_with_albums
+```
+
+My_Theme()
+
+We can use the my_theme() function to add a pleasant appearance to our graphs.
+
+```{r}
+ggplot(taylor_songs_with_albums, aes(x=album_name, y=danceability)) + 
+  geom_boxplot() +
+  my_theme() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+ We can see how danceable each album is on the plot above. It appears Lover is one of most danceable albums. We can use our earlier data moves to compare if dancability has any correlation to the avgscore variable we created earlier.

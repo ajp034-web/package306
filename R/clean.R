@@ -2,7 +2,7 @@
 #'
 #' @param data_frame A data frame that needs to be cleaned for easier use
 #' @param remove_missing A logical argument that tells the function to remove incomplete cases
-#' @param remove_duplicates A logical argument that tells the function to remove duplicate cases
+#' @param remove_duplicate A logical argument that tells the function to remove duplicate cases
 #'
 #' @return The original data frame after being cleaned
 #' @export
@@ -25,7 +25,7 @@ clean<- function(data_frame, remove_missing = TRUE, remove_duplicate = TRUE){
 
   ## Removes incomplete cases
   if(remove_missing){
-    data_frame <- data_frame[complete.cases(data_frame), ]
+    data_frame <- data_frame[stats::complete.cases(data_frame), ]
   }
 
   ## Remove duplicates

@@ -2,8 +2,8 @@ Package: package306
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Aylee", "Pheasant", , "ajp034@bucknell.edu", role = c("aut", "cre"))
+Description: The goal of package306 is to provide simple tools for cleaning data and creating consistent, visually appealing data visualizations. The package includes a helper function for cleaning data frames, a custom ggplot2 theme, and a pink-themed brand.
 License: MIT + file LICENSE
 Config/roxygen2/version: 8.1.0
 Encoding: UTF-8
@@ -12,3 +12,7 @@ Imports:
     clean
 URL: https://github.com/ajp034-web/package306
 BugReports: https://github.com/ajp034-web/package306/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

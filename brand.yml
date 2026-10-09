@@ -1,0 +1,30 @@
+color:
+  palette:
+    primary: "#F08080"
+    secondary: "#EEB4B4"
+    accent: "#8B475D"
+    dark: "#670030"
+    light: "#FFF0F5"
+
+  foreground: dark
+  background: light
+
+typography:
+  fonts:
+    - family: "Dongle"
+      source: google
+
+  base:
+    family: "Dongle"
+
+  headings:
+    family: "Dongle"
+    weight: 700
+
+logo:
+  images:
+    icon:
+      path: "logo.png"
+  small: "logo.png"
+  medium: "logo.png"
+  large: "logo.png"

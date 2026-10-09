@@ -11,7 +11,7 @@ clean(data_frame, remove_missing = TRUE, remove_duplicate = TRUE)
 
 \item{remove_missing}{A logical argument that tells the function to remove incomplete cases}
 
-\item{remove_duplicates}{A logical argument that tells the function to remove duplicate cases}
+\item{remove_duplicate}{A logical argument that tells the function to remove duplicate cases}
 }
 \value{
 The original data frame after being cleaned
